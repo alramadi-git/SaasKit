@@ -4,18 +4,13 @@ import type { Metadata } from "next";
 import { eEnvironment } from "@/enums/environment";
 
 import { Cairo } from "next/font/google";
-import {
-  getMessages,
-  getTranslations,
-  setRequestLocale,
-} from "next-intl/server";
 import { cn } from "@/utilities/cn";
+import { getMessages, getTranslations } from "next-intl/server";
 
 import ThemeProvider from "@/components/locals/providers/theme-provider";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { Toaster } from "@/components/shadcn/sonner";
-import { Container } from "@/components/locals/blocks/typography";
 
 const cairo = Cairo({
   weight: ["300", "400", "500", "700", "900"],
@@ -30,8 +25,8 @@ const cairo = Cairo({
 export const dynamic = "force-static";
 export async function generateMetadata({}: LayoutProps<"/[locale]">): Promise<Metadata> {
   const tLayout = await getTranslations("app.layout");
-  const tMetadata: Metadata = tLayout.raw("metadata");
 
+  const tMetadata: Metadata = tLayout.raw("metadata");
   return tMetadata;
 }
 export default async function Layout({
@@ -39,7 +34,6 @@ export default async function Layout({
   params,
 }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
-  setRequestLocale(locale);
 
   const [tSettings, messages] = await Promise.all([
     getTranslations("settings"),
@@ -61,11 +55,9 @@ export default async function Layout({
         >
           <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
-            <Container className="relative">
-              <Toaster
-                position={tSettings("dir") === "ltr" ? "top-right" : "top-left"}
-              />
-            </Container>
+            <Toaster
+              position={tSettings("dir") === "ltr" ? "top-right" : "top-left"}
+            />
           </NextIntlClientProvider>
         </ThemeProvider>
 

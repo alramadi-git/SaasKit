@@ -5,6 +5,151 @@
   },
 
   "components": {
+    "account": {
+      "unauthenticated": "Login now",
+
+      "authenticated": {
+        "navigation-menu": [
+          {
+            "href": "/user/profile",
+            "label": "Profile"
+          }
+        ],
+
+        "logout": "Logout"
+      }
+    },
+
+    "languages": {
+      "placeholder": "Search your language...",
+      "when-empty": "No matching languages found",
+
+      "continents": [
+        {
+          "label": "Africa",
+          "countries": [
+            {
+              "dir": "rtl",
+              "locale": "ar-MA",
+              "flag": "🇲🇦",
+              "label": "العربية (المغرب)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "en-NG",
+              "flag": "🇳🇬",
+              "label": "English (Nigeria)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "en-ZA",
+              "flag": "🇿🇦",
+              "label": "English (South Africa)"
+            }
+          ]
+        },
+        {
+          "label": "America",
+          "countries": [
+            {
+              "dir": "ltr",
+              "locale": "en-CA",
+              "flag": "🇨🇦",
+              "label": "English (Canada)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "es-MX",
+              "flag": "🇲🇽",
+              "label": "Español (México)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "en-US",
+              "flag": "🇺🇸",
+              "label": "English (United States)"
+            }
+          ]
+        },
+        {
+          "label": "Asia",
+          "countries": [
+            {
+              "dir": "ltr",
+              "locale": "zh-CN",
+              "flag": "🇨🇳",
+              "label": "中文 (中国)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "hi-IN",
+              "flag": "🇮🇳",
+              "label": "हिन्दी (भारत)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "ja-JP",
+              "flag": "🇯🇵",
+              "label": "日本語 (日本)"
+            },
+            {
+              "dir": "rtl",
+              "locale": "ar-SA",
+              "flag": "🇸🇦",
+              "label": "العربية (المملكة العربية السعودية)"
+            }
+          ]
+        },
+        {
+          "label": "Europe",
+          "countries": [
+            {
+              "dir": "ltr",
+              "locale": "fr-FR",
+              "flag": "🇫🇷",
+              "label": "Français (France)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "de-DE",
+              "flag": "🇩🇪",
+              "label": "Deutsch (Deutschland)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "en-GB",
+              "flag": "🇬🇧",
+              "label": "English (United Kingdom)"
+            }
+          ]
+        },
+        {
+          "label": "Oceania",
+          "countries": [
+            {
+              "dir": "ltr",
+              "locale": "en-AU",
+              "flag": "🇦🇺",
+              "label": "English (Australia)"
+            },
+            {
+              "dir": "ltr",
+              "locale": "en-NZ",
+              "flag": "🇳🇿",
+              "label": "English (New Zealand)"
+            }
+          ]
+        }
+      ],
+
+      "default-language": {
+        "dir": "ltr",
+        "locale": "en-US",
+        "flag": "🇺🇸",
+        "label": "English (United States)"
+      }
+    },
+
     "fields": {
       "password": {
         "aria-controls": "password",
@@ -69,6 +214,214 @@
           {
             "name": "nawaf alramadi",
             "url": "https://alramadi.com"
+          }
+        ]
+      },
+
+      "header": {
+        "logo": {
+          "href": "/",
+
+          "src": "https://ik.imagekit.io/alramadi/saas-kit/website/logo.png",
+          "alt": "logo"
+        },
+
+        "account": {
+          "not-logged-in": "Login now",
+
+          "logged-in": {
+            "navigation": [
+              {
+                "href": "/user/profile",
+                "label": "Profile"
+              }
+            ],
+
+            "logout": "Logout"
+          }
+        },
+
+        "languages": {
+          "placeholder": "Search your language...",
+          "when-empty": "No matching languages found",
+
+          "continents": [
+            {
+              "label": "Africa",
+              "countries": [
+                {
+                  "dir": "rtl",
+                  "locale": "ar-MA",
+                  "flag": "🇲🇦",
+                  "label": "العربية (المغرب)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "en-NG",
+                  "flag": "🇳🇬",
+                  "label": "English (Nigeria)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "en-ZA",
+                  "flag": "🇿🇦",
+                  "label": "English (South Africa)"
+                }
+              ]
+            },
+            {
+              "label": "America",
+              "countries": [
+                {
+                  "dir": "ltr",
+                  "locale": "en-CA",
+                  "flag": "🇨🇦",
+                  "label": "English (Canada)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "es-MX",
+                  "flag": "🇲🇽",
+                  "label": "Español (México)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "en-US",
+                  "flag": "🇺🇸",
+                  "label": "English (United States)"
+                }
+              ]
+            },
+            {
+              "label": "Asia",
+              "countries": [
+                {
+                  "dir": "ltr",
+                  "locale": "zh-CN",
+                  "flag": "🇨🇳",
+                  "label": "中文 (中国)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "hi-IN",
+                  "flag": "🇮🇳",
+                  "label": "हिन्दी (भारत)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "ja-JP",
+                  "flag": "🇯🇵",
+                  "label": "日本語 (日本)"
+                },
+                {
+                  "dir": "rtl",
+                  "locale": "ar-SA",
+                  "flag": "🇸🇦",
+                  "label": "العربية (المملكة العربية السعودية)"
+                }
+              ]
+            },
+            {
+              "label": "Europe",
+              "countries": [
+                {
+                  "dir": "ltr",
+                  "locale": "fr-FR",
+                  "flag": "🇫🇷",
+                  "label": "Français (France)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "de-DE",
+                  "flag": "🇩🇪",
+                  "label": "Deutsch (Deutschland)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "en-GB",
+                  "flag": "🇬🇧",
+                  "label": "English (United Kingdom)"
+                }
+              ]
+            },
+            {
+              "label": "Oceania",
+              "countries": [
+                {
+                  "dir": "ltr",
+                  "locale": "en-AU",
+                  "flag": "🇦🇺",
+                  "label": "English (Australia)"
+                },
+                {
+                  "dir": "ltr",
+                  "locale": "en-NZ",
+                  "flag": "🇳🇿",
+                  "label": "English (New Zealand)"
+                }
+              ]
+            }
+          ]
+        },
+
+        "desktop-navigation-menu": [
+          {
+            "id": 1,
+            "label": "Quick Links",
+
+            "submenu": [
+              {
+                "id": 1,
+                "href": "/",
+                "label": "Home",
+                "description": "The main page featuring the latest news and highlights."
+              },
+              {
+                "id": 2,
+                "href": "/blogs",
+                "label": "Blogs",
+                "description": "Articles, tips, and fresh content about the world of software and startups."
+              },
+              {
+                "id": 3,
+                "href": "/about",
+                "label": "About Us",
+                "description": "Learn about our vision, mission, and the team behind SaasKit."
+              },
+              {
+                "id": 4,
+                "href": "/contact",
+                "label": "Contact Us",
+                "description": "Get in touch with us via forms, email, or phone."
+              }
+            ]
+          }
+        ],
+
+        "mobile-navigation-menu": [
+          {
+            "id": 1,
+            "href": "/",
+            "label": "Home",
+            "description": "The main page featuring the latest news and highlights."
+          },
+          {
+            "id": 2,
+            "href": "/blogs",
+            "label": "Blogs",
+            "description": "Articles, tips, and fresh content about the world of software and startups."
+          },
+          {
+            "id": 3,
+            "href": "/about",
+            "label": "About Us",
+            "description": "Learn about our vision, mission, and the team behind SaasKit."
+          },
+          {
+            "id": 4,
+            "href": "/contact",
+            "label": "Contact Us",
+            "description": "Get in touch with us via forms, email, or phone."
           }
         ]
       }

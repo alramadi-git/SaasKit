@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { GridPattern } from "@/components/magicui/grid-pattern";
 import { Section, Container } from "@/components/locals/blocks/typography";
 import {
   Card,
@@ -11,7 +12,6 @@ import {
 } from "@/components/shadcn/card";
 import Form from "@/components/locals/base/authentication/login/form";
 import { FullHDImage } from "@/components/locals/blocks/image";
-import { GridPattern } from "@/components/magicui/grid-pattern";
 
 export default async function Page() {
   const tPage = await getTranslations("app.authentication.login.page");

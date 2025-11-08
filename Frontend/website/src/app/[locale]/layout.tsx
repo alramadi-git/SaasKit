@@ -1,6 +1,7 @@
 import "./../globals.css";
+import type { Metadata } from "next";
 
-import { ENVIRONMENT } from "@/enums/environment";
+import { eEnvironment } from "@/enums/environment";
 
 import { Cairo } from "next/font/google";
 import {
@@ -25,7 +26,12 @@ const cairo = Cairo({
 });
 
 export const dynamic = "force-static";
+export async function generateMetadata({}: LayoutProps<"/[locale]">): Promise<Metadata> {
+  const tLayout = await getTranslations("app.layout");
+  const tMetadata: Metadata = tLayout.raw("metadata");
 
+  return tMetadata;
+}
 export default async function Layout({
   children,
   params,
@@ -33,13 +39,17 @@ export default async function Layout({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const [t, messages] = await Promise.all([
-    getTranslations("app.layout"),
+  const [tSettings, messages] = await Promise.all([
+    getTranslations("settings"),
     getMessages({ locale }),
   ]);
 
   return (
-    <html suppressHydrationWarning lang={t("lang")} dir={t("dir")}>
+    <html
+      suppressHydrationWarning
+      lang={tSettings("lang")}
+      dir={tSettings("dir")}
+    >
       <body className={cn(cairo.className, "antialiased")}>
         <ThemeProvider
           enableSystem
@@ -52,8 +62,8 @@ export default async function Layout({
           </NextIntlClientProvider>
         </ThemeProvider>
 
-        {(process.env.NODE_ENV === ENVIRONMENT.DEVELOPMENT ||
-          process.env.NODE_ENV === ENVIRONMENT.TEST) && (
+        {(process.env.NODE_ENV === eEnvironment.development ||
+          process.env.NODE_ENV === eEnvironment.test) && (
           <Script
             crossOrigin="anonymous"
             src="https://unpkg.com/react-scan/dist/auto.global.js"

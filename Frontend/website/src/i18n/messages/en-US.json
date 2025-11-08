@@ -1,0 +1,134 @@
+{
+  "settings": {
+    "lang": "en-US",
+    "dir": "ltr"
+  },
+
+  "components": {
+    "fields": {
+      "password": {
+        "aria-controls": "password",
+        "aria-label": "{isVisible, select, true {Hide password} other {Show password}}"
+      }
+    }
+  },
+
+  "app": {
+    "layout": {
+      "metadata": {
+        "title": {
+          "default": "SaasKit | Build SaaS apps easily",
+          "template": "%s | SaasKit"
+        },
+        "description": "With SaasKit you can build SaaS apps faster and easier than ever.",
+
+        "icons": {
+          "icon": [
+            {
+              "sizes": "16x16",
+              "type": "image/png",
+              "url": "https://ik.imagekit.io/alramadi/saas-kit/website/icons/favicon-16x16.png"
+            },
+            {
+              "sizes": "32x32",
+              "type": "image/png",
+              "url": "https://ik.imagekit.io/alramadi/saas-kit/website/icons/favicon-32x32.png"
+            },
+            {
+              "sizes": "192x192",
+              "type": "image/png",
+              "url": "https://ik.imagekit.io/alramadi/saas-kit/website/icons/android-chrome-192x192.png"
+            },
+            {
+              "type": "image/png",
+              "sizes": "512x512",
+              "url": "https://ik.imagekit.io/alramadi/saas-kit/website/icons/android-chrome-512x512.png"
+            }
+          ],
+          "apple": "https://ik.imagekit.io/alramadi/saas-kit/website/icons/apple-touch-icon.png",
+          "shortcut": "https://ik.imagekit.io/alramadi/saas-kit/website/icons/favicon.ico"
+        },
+
+        "openGraph": {
+          "title": "SaasKit | Build SaaS apps easily",
+          "description": "With SaasKit you can build SaaS apps faster and easier than ever.",
+          "type": "website",
+          "locale": "en-US",
+          "siteName": "SaasKit",
+          "url": "https://saaskit.com",
+          "images": {
+            "width": 1200,
+            "height": 630,
+            "url": "https://ik.imagekit.io/alramadi/saas-kit/website/open-graphs/en-us.png",
+            "alt": "SaasKit open graph image"
+          }
+        },
+
+        "creator": "SaasKit",
+        "authors": [
+          {
+            "name": "nawaf alramadi",
+            "url": "https://alramadi.com"
+          }
+        ]
+      }
+    },
+
+    "page": {},
+
+    "authentication": {
+      "login": {
+        "page": {
+          "title": "Welcome back",
+          "description": "Login to your account to continue using SaasKit.",
+
+          "form": {
+            "title": "Login to your account",
+            "description": "Enter your email and password to login to your account.",
+
+            "email": {
+              "label": "Email",
+              "placeholder": "user@saaskit.com"
+            },
+
+            "password": {
+              "label": "Password",
+              "placeholder": "********",
+
+              "forgot-your-password": {
+                "label": "Forgot your password?",
+                "href": "/admin/authentication/forgot-password"
+              }
+            },
+
+            "submit": "login",
+            "register": {
+              "href": "/admin/authentication/register",
+              "label": "Don't have an account? <link>Create one</link>"
+            },
+
+            "separator": "Or continue with",
+            "providers": [
+              {
+                "label": "Apple"
+              },
+              {
+                "label": "Google"
+              },
+              {
+                "label": "Meta"
+              }
+            ],
+
+            "terms-and-conditions": "By logging in, you agree to the <termsLink>Terms </termsLink> and <PrivacyLink>Privacy Policy</PrivacyLink>."
+          },
+
+          "illustration": {
+            "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",
+            "alt": "placeholder"
+          }
+        }
+      }
+    }
+  }
+}

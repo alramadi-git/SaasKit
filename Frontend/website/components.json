@@ -14,9 +14,11 @@
   "aliases": {
     "components": "@/components",
     "utils": "@/utilities/cn",
-    "ui": "@/components/ui",
+    "ui": "@/components/shadcn",
     "lib": "@/libraries",
     "hooks": "@/hooks"
   },
-  "registries": {}
+  "registries": {
+    "@magicui": "https://magicui.design/r/{name}.json"
+  }
 }

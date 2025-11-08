@@ -14,6 +14,8 @@ import { cn } from "@/utilities/cn";
 import ThemeProvider from "@/components/locals/providers/theme-provider";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
+import { Toaster } from "@/components/shadcn/sonner";
+import { Container } from "@/components/locals/blocks/typography";
 
 const cairo = Cairo({
   weight: ["300", "400", "500", "700", "900"],
@@ -59,6 +61,11 @@ export default async function Layout({
         >
           <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
+            <Container className="relative">
+              <Toaster
+                position={tSettings("dir") === "ltr" ? "top-right" : "top-left"}
+              />
+            </Container>
           </NextIntlClientProvider>
         </ThemeProvider>
 

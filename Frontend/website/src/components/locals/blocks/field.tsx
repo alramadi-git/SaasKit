@@ -1,12 +1,12 @@
 "use client";
 
-import { z } from "zod";
-import { ComponentProps, useState } from "react";
+import { tEmail, tPassword } from "@/validations/authentication";
 
 import { cn } from "@/utilities/cn";
+
+import { ComponentProps, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { LuMail, LuEye, LuEyeOff } from "react-icons/lu";
 import {
   FieldValues,
   Path,
@@ -14,8 +14,9 @@ import {
   ControllerFieldState,
   UseFormStateReturn,
 } from "react-hook-form";
+
+import { LuMail, LuEye, LuEyeOff } from "react-icons/lu";
 import { Input } from "@/components/shadcn/input";
-import { Button } from "@/components/shadcn/button";
 
 export type tInputProps = ComponentProps<typeof Input>;
 export type tControllerRenderProps<
@@ -26,26 +27,6 @@ export type tControllerRenderProps<
   fieldState: ControllerFieldState;
   formState: UseFormStateReturn<TFieldValues>;
 };
-
-export const zPassword = z
-  .string()
-  .trim()
-  .min(8, { message: "Password must be at least 8" })
-  .max(32, { message: "Password must be at most 32" })
-  .regex(/[a-z]/, {
-    message: "Password must contain at least one lowercase letter",
-  })
-  .regex(/[A-Z]/, {
-    message: "Password must contain at least one uppercase letter",
-  })
-  .regex(/[0-9]/, { message: "Password must contain at least one number" })
-  .regex(/[^A-Za-z0-9]/, {
-    message: "Password must contain at least one special character",
-  })
-  .regex(/^\S+$/, {
-    message: "Password must not contain spaces",
-  });
-type tPassword = z.infer<typeof zPassword>;
 
 export type tFieldPassword = {
   controllerRenderProps: tControllerRenderProps<
@@ -79,11 +60,12 @@ export function FieldPassword({
       />
 
       <button
-        aria-controls={tPassword("aria-controls")}
         aria-pressed={isVisible}
         aria-label={tPassword("aria-label", {
           isVisible: isVisible ? "true" : "false",
         })}
+        aria-controls={tPassword("aria-controls")}
+        type="button"
         className={cn(
           "text-muted-foreground/80 hover:text-foreground absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
           {
@@ -94,17 +76,14 @@ export function FieldPassword({
         onClick={toggleVisibility}
       >
         {isVisible ? (
-          <LuEyeOff size={16} aria-hidden="true" className="aria" />
+          <LuEyeOff size={16} aria-hidden="true" />
         ) : (
-          <LuEye size={16} aria-hidden="true" className="aria" />
+          <LuEye size={16} aria-hidden="true" />
         )}
       </button>
     </div>
   );
 }
-
-export const zEmail = z.email().trim();
-type tEmail = z.infer<typeof zEmail>;
 
 export type tFieldEmail = {
   controllerRenderProps: tControllerRenderProps<{ email: tEmail }, "email">;
@@ -126,7 +105,14 @@ export function FieldEmail({
         {...controllerRenderProps.field}
         {...inputProps}
       />
-      <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 peer-disabled:opacity-50">
+      <div
+        className={cn(
+          "text-muted-foreground/80 pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 peer-disabled:opacity-50",
+          {
+            "text-destructive": controllerRenderProps.fieldState.invalid,
+          },
+        )}
+      >
         <LuMail size={16} aria-hidden="true" />
       </div>
     </div>

@@ -79,53 +79,120 @@
     "authentication": {
       "login": {
         "page": {
-          "title": "Welcome back",
-          "description": "Login to your account to continue using SaasKit.",
-
-          "form": {
-            "title": "Login to your account",
-            "description": "Enter your email and password to login to your account.",
-
-            "email": {
-              "label": "Email",
-              "placeholder": "user@saaskit.com"
+          "card": {
+            "header": {
+              "title": "Welcome back",
+              "description": "Login to your account to continue using SaasKit."
             },
+            "content": {
+              "form": {
+                "title": "Login to your account",
+                "description": "Enter your email and password to login to your account.",
 
-            "password": {
-              "label": "Password",
-              "placeholder": "********",
+                "email": {
+                  "label": "Email",
+                  "placeholder": "user@saaskit.com"
+                },
 
-              "forgot-your-password": {
-                "label": "Forgot your password?",
-                "href": "/admin/authentication/forgot-password"
+                "password": {
+                  "label": "Password",
+                  "placeholder": "********",
+
+                  "forgot-your-password": {
+                    "label": "Forgot your password?",
+                    "href": "/authentication/forgot-password"
+                  }
+                },
+
+                "submit": "login",
+                "register": {
+                  "href": "/authentication/register",
+                  "label": "Don't have an account? <link>Create one</link>"
+                },
+
+                "separator": "Or continue with",
+                "providers": [
+                  {
+                    "label": "Apple"
+                  },
+                  {
+                    "label": "Google"
+                  },
+                  {
+                    "label": "Meta"
+                  }
+                ],
+
+                "legal": {
+                  "terms-and-conditions-href": "/terms-and-conditions",
+                  "privacy-policy-href": "/privacy-policy",
+                  "label": "By logging in, you agree to the <terms_and_conditions>Terms & Conditions</terms_and_conditions> and <privacy_policy>Privacy Policy</privacy_policy>."
+                }
               }
             },
-
-            "submit": "login",
-            "register": {
-              "href": "/admin/authentication/register",
-              "label": "Don't have an account? <link>Create one</link>"
-            },
-
-            "separator": "Or continue with",
-            "providers": [
-              {
-                "label": "Apple"
-              },
-              {
-                "label": "Google"
-              },
-              {
-                "label": "Meta"
+            "footer": {
+              "illustration": {
+                "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",
+                "alt": "placeholder"
               }
-            ],
+            }
+          }
+        }
+      }
+    },
 
-            "terms-and-conditions": "By logging in, you agree to the <termsLink>Terms </termsLink> and <PrivacyLink>Privacy Policy</PrivacyLink>."
-          },
+    "admin": {
+      "authentication": {
+        "login": {
+          "page": {
+            "card": {
+              "header": {
+                "title": "Welcome back",
+                "description": "Login to your account to continue using SaasKit."
+              },
+              "content": {
+                "form": {
+                  "title": "Login to your account",
+                  "description": "Enter your email and password to login to your account.",
 
-          "illustration": {
-            "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",
-            "alt": "placeholder"
+                  "email": {
+                    "label": "Email",
+                    "placeholder": "user@saaskit.com"
+                  },
+
+                  "password": {
+                    "label": "Password",
+                    "placeholder": "********",
+
+                    "forgot-your-password": {
+                      "label": "Forgot your password?",
+                      "href": "/admin/authentication/forgot-password"
+                    }
+                  },
+
+                  "submit": "login",
+
+                  "separator": "Or continue with",
+                  "providers": [
+                    {
+                      "label": "Apple"
+                    },
+                    {
+                      "label": "Google"
+                    },
+                    {
+                      "label": "Meta"
+                    }
+                  ]
+                }
+              },
+              "footer": {
+                "illustration": {
+                  "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",
+                  "alt": "placeholder"
+                }
+              }
+            }
           }
         }
       }

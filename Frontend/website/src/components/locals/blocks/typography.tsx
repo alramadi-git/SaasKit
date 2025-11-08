@@ -9,7 +9,7 @@ export function Section({
   return <section className={cn(sectionClassName, className)} {...props} />;
 }
 
-export const containerClassName: string = "container";
+export const containerClassName: string = "container mx-auto";
 export function Container({
   className,
   ...props

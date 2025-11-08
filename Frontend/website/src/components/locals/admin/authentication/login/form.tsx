@@ -1,6 +1,6 @@
 "use client";
 
-import { ClsAuthenticationService } from "@/services/base/authentication";
+import { ClsAuthenticationService } from "@/services/admin/authentication";
 
 import { tCredentials, zCredentials } from "@/validations/authentication";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,13 +15,11 @@ import {
   FieldSeparator,
   Field,
   FieldLabel,
-  FieldDescription,
   FieldError,
 } from "@/components/shadcn/field";
 import { FieldEmail, FieldPassword } from "@/components/locals/blocks/field";
 import { Button } from "@/components/shadcn/button";
 import { Link } from "@/components/locals/blocks/link";
-import { toast } from "sonner";
 
 const providersIcons = [FaApple, FaGoogle, FaMeta];
 
@@ -36,7 +34,7 @@ export default function Form() {
   });
 
   const tForm = useTranslations(
-    "app.authentication.login.page.card.content.form",
+    "app.admin.authentication.login.page.card.content.form",
   );
   const providers = (
     tForm.raw("providers") as {
@@ -48,63 +46,11 @@ export default function Form() {
   }));
 
   const authenticationService = new ClsAuthenticationService();
-
+  
   async function onSubmit(values: tCredentials) {
     const response = await authenticationService.login(values);
 
     console.log(response);
-  }
-
-  function onClick(provider: string) {
-    toast(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-
-    toast.success(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.error(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.info(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.loading(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.warning(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
   }
 
   return (
@@ -183,14 +129,6 @@ export default function Form() {
 
         <Field>
           <Button type="submit">{tForm("submit")}</Button>
-
-          <FieldDescription>
-            {tForm.rich("register.label", {
-              link: (chunk) => (
-                <Link href={tForm("register.href")}>{chunk}</Link>
-              ),
-            })}
-          </FieldDescription>
         </Field>
 
         <FieldSeparator className="*:data-[slot=field-separator-content]:bg-transparent">
@@ -199,29 +137,11 @@ export default function Form() {
 
         <Field className="grid grid-cols-3 gap-6">
           {providers.map((provider) => (
-            <Button
-              key={provider.label}
-              variant="outline"
-              type="button"
-              onClick={() => onClick(provider.label)}
-            >
+            <Button key={provider.label} variant="outline" type="button">
               <provider.icon />
             </Button>
           ))}
         </Field>
-
-        <FieldDescription className="w-3/4">
-          {tForm.rich("legal.label", {
-            terms_and_conditions: (chunk) => (
-              <Link href={tForm("legal.terms-and-conditions-href")}>
-                {chunk}
-              </Link>
-            ),
-            privacy_policy: (chunk) => (
-              <Link href={tForm("legal.privacy-policy-href")}>{chunk}</Link>
-            ),
-          })}
-        </FieldDescription>
       </FieldGroup>
     </form>
   );

@@ -10,11 +10,11 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/shadcn/card";
-import Form from "@/components/locals/admin/authentication/login/form";
+import Form from "@/components/locals/base/authentication/login/form";
 import { FullHDImage } from "@/components/locals/blocks/image";
 
 export default async function Page() {
-  const tPage = await getTranslations("app.admin.authentication.login.page");
+  const tPage = await getTranslations("app.authentication.login.page");
 
   return (
     <main className="relative h-dvh overflow-hidden">

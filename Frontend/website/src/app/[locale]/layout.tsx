@@ -1,5 +1,4 @@
 import "./../globals.css";
-import type { Metadata } from "next";
 
 import { eEnvironment } from "@/enums/environment";
 

@@ -21,6 +21,9 @@ import { FieldEmail, FieldPassword } from "@/components/locals/blocks/field";
 import { Button } from "@/components/shadcn/button";
 import { Link } from "@/components/locals/blocks/link";
 
+type tProvider = {
+  name: string;
+};
 const providersIcons = [FaApple, FaGoogle, FaMeta];
 
 export default function Form() {
@@ -36,22 +39,22 @@ export default function Form() {
   const tForm = useTranslations(
     "app.admin.authentication.login.page.card.content.form",
   );
-  const providers = (
-    tForm.raw("providers") as {
-      label: string;
-    }[]
-  ).map((provider, index) => ({
-    icon: providersIcons[index],
-    ...provider,
-  }));
+  const providers = (tForm.raw("providers") as tProvider[]).map(
+    (provider, index) => ({
+      icon: providersIcons[index],
+      ...provider,
+    }),
+  );
 
   const authenticationService = new ClsAuthenticationService();
-  
+
   async function onSubmit(values: tCredentials) {
     const response = await authenticationService.login(values);
 
     console.log(response);
   }
+
+  function onClick(provider: string) {}
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -137,7 +140,12 @@ export default function Form() {
 
         <Field className="grid grid-cols-3 gap-6">
           {providers.map((provider) => (
-            <Button key={provider.label} variant="outline" type="button">
+            <Button
+              key={provider.name}
+              variant="outline"
+              type="button"
+              onClick={() => onClick(provider.name)}
+            >
               <provider.icon />
             </Button>
           ))}

@@ -42,7 +42,7 @@ export default function Account({ align }: tAccountProps) {
   if (account === undefined)
     return (
       <Button asChild variant="outline">
-        <Link href="/user/authentication/login">
+        <Link href="/authentication/login">
           {tAccount("unauthenticated")}
         </Link>
       </Button>

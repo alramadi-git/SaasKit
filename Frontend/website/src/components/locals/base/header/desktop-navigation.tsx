@@ -20,7 +20,7 @@ type tSubNavigationMenuItem = {
 type tSubNavigationMenu = {
   id: number;
   label: string;
-  submenu: Array<tSubNavigationMenuItem>;
+  "sub-navigation-menu": Array<tSubNavigationMenuItem>;
 };
 
 type tNavigationMenuItemProps = {
@@ -66,11 +66,11 @@ type tSubNavigationMenuProps = {
 function SubNavigationMenu({ subNavigationMenu }: tSubNavigationMenuProps) {
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger >
-        {subNavigationMenu.label}
-      </NavigationMenuTrigger>
+      <NavigationMenuTrigger>{subNavigationMenu.label}</NavigationMenuTrigger>
       <NavigationMenuContent>
-        <SubNavigationMenuItems items={subNavigationMenu.submenu} />
+        <SubNavigationMenuItems
+          items={subNavigationMenu["sub-navigation-menu"]}
+        />
       </NavigationMenuContent>
     </NavigationMenuItem>
   );
@@ -78,8 +78,9 @@ function SubNavigationMenu({ subNavigationMenu }: tSubNavigationMenuProps) {
 
 export default async function DesktopNavigation() {
   const tHeader = await getTranslations("app.layout.header");
-  const tNavigationMenu: Array<tSubNavigationMenu> =
-    tHeader.raw("desktop-navigation-menu");
+  const tNavigationMenu: Array<tSubNavigationMenu> = tHeader.raw(
+    "desktop-navigation-menu",
+  );
 
   return (
     <NavigationMenu className="z-20">

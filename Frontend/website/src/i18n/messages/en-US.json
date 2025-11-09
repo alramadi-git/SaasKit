@@ -223,7 +223,7 @@
           "href": "/",
 
           "src": "https://ik.imagekit.io/alramadi/saas-kit/website/logo.png",
-          "alt": "logo"
+          "alt": "SaasKit logo"
         },
 
         "account": {
@@ -369,7 +369,7 @@
             "id": 1,
             "label": "Quick Links",
 
-            "submenu": [
+            "sub-navigation-menu": [
               {
                 "id": 1,
                 "href": "/",
@@ -424,6 +424,154 @@
             "description": "Get in touch with us via forms, email, or phone."
           }
         ]
+      },
+
+      "footer": {
+        "logo": {
+          "src": "https://ik.imagekit.io/alramadi/saas-kit/website/logo.png",
+          "alt": "SaasKit logo"
+        },
+
+        "title": "SaasKit",
+        "description": "A modern toolkit designed to help developers build, launch, and scale SaaS applications faster — with flexibility, performance, and simplicity at its core.",
+
+        "navigation-menu": [
+          {
+            "label": "Our Services",
+            "sub-navigation-menu": [
+              {
+                "label": "Platform Features",
+                "href": "#"
+              },
+              {
+                "label": "Available Solutions",
+                "href": "#"
+              },
+              {
+                "label": "Our Clients",
+                "href": "#"
+              },
+              {
+                "label": "Pricing Plans",
+                "href": "#"
+              },
+              {
+                "label": "Support",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "label": "Our Options",
+            "sub-navigation-menu": [
+              {
+                "label": "For Startups",
+                "href": "#"
+              },
+              {
+                "label": "For Freelancers",
+                "href": "#"
+              },
+              {
+                "label": "For Enterprises",
+                "href": "#"
+              },
+              {
+                "label": "For Students",
+                "href": "#"
+              },
+              {
+                "label": "Collaboration & Teamwork",
+                "href": "#"
+              },
+              {
+                "label": "Design & Creativity",
+                "href": "#"
+              },
+              {
+                "label": "Resource Management",
+                "href": "#"
+              }
+            ]
+          },
+          {
+            "label": "About the Company",
+            "sub-navigation-menu": [
+              {
+                "label": "About Us",
+                "href": "/about"
+              },
+              {
+                "label": "Careers",
+                "href": "/careers"
+              },
+              {
+                "label": "Blogs",
+                "href": "/blogs"
+              },
+              {
+                "label": "Contact Us",
+                "href": "/contact"
+              },
+              {
+                "label": "Technical Support",
+                "href": "/support "
+              }
+            ]
+          },
+          {
+            "label": "Terms & Policies",
+            "sub-navigation-menu": [
+              {
+                "label": "Terms & Conditions",
+                "href": "/terms-and-conditions"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "/privacy-policy"
+              },
+              {
+                "label": "Cookie Policy",
+                "href": "/cookie-policy"
+              },
+              {
+                "label": "Security & Privacy",
+                "href": "/security-and-privacy"
+              }
+            ]
+          }
+        ],
+
+        "outro": {
+          "label": "<copyright></copyright> <time></time> <span>SaasKit LLC, All rights reserved.</span>",
+
+          "socials": [
+            {
+              "aria-label": "LinkedIn",
+              "href": "https://linkedin.com/in/saaskit"
+            },
+            {
+              "aria-label": "X/Twitter",
+              "href": "https://x.com/saaskit"
+            },
+            {
+              "aria-label": "Facebook",
+              "href": "https://www.facebook.com/saaskit"
+            },
+            {
+              "aria-label": "Instagram",
+              "href": "https://www.instagram.com/saaskit"
+            },
+            {
+              "aria-label": "Youtube",
+              "href": "https://www.youtube.com/@saaskit"
+            },
+            {
+              "aria-label": "TikTok",
+              "href": "https://www.tiktok.com/@saaskit"
+            }
+          ]
+        }
       }
     },
 
@@ -437,6 +585,7 @@
               "title": "Welcome back",
               "description": "Login to your account to continue using SaasKit."
             },
+
             "content": {
               "form": {
                 "title": "Login to your account",
@@ -466,23 +615,24 @@
                 "separator": "Or continue with",
                 "providers": [
                   {
-                    "label": "Apple"
+                    "name": "Apple"
                   },
                   {
-                    "label": "Google"
+                    "name": "Google"
                   },
                   {
-                    "label": "Meta"
+                    "name": "Meta"
                   }
                 ],
 
-                "legal": {
+                "terms-and-policies": {
                   "terms-and-conditions-href": "/terms-and-conditions",
                   "privacy-policy-href": "/privacy-policy",
                   "label": "By logging in, you agree to the <terms_and_conditions>Terms & Conditions</terms_and_conditions> and <privacy_policy>Privacy Policy</privacy_policy>."
                 }
               }
             },
+
             "footer": {
               "illustration": {
                 "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",
@@ -528,13 +678,13 @@
                   "separator": "Or continue with",
                   "providers": [
                     {
-                      "label": "Apple"
+                      "name": "Apple"
                     },
                     {
-                      "label": "Google"
+                      "name": "Google"
                     },
                     {
-                      "label": "Meta"
+                      "name": "Meta"
                     }
                   ]
                 }

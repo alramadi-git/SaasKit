@@ -1,3 +1,9 @@
+import Hero from "@/components/locals/base/hero/hero";
+
 export default function Page() {
-  return <h1>Hello, world!</h1>;
+  return (
+    <main>
+      <Hero />
+    </main>
+  );
 }

@@ -23,12 +23,7 @@ const cairo = Cairo({
 });
 
 export const dynamic = "force-static";
-export async function generateMetadata({}: LayoutProps<"/[locale]">): Promise<Metadata> {
-  const tLayout = await getTranslations("app.layout");
 
-  const tMetadata: Metadata = tLayout.raw("metadata");
-  return tMetadata;
-}
 export default async function Layout({
   children,
   params,

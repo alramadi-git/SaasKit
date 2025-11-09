@@ -21,8 +21,10 @@ import {
 import { FieldEmail, FieldPassword } from "@/components/locals/blocks/field";
 import { Button } from "@/components/shadcn/button";
 import { Link } from "@/components/locals/blocks/link";
-import { toast } from "sonner";
 
+type tProvider = {
+  name: string;
+};
 const providersIcons = [FaApple, FaGoogle, FaMeta];
 
 export default function Form() {
@@ -38,14 +40,12 @@ export default function Form() {
   const tForm = useTranslations(
     "app.authentication.login.page.card.content.form",
   );
-  const providers = (
-    tForm.raw("providers") as {
-      label: string;
-    }[]
-  ).map((provider, index) => ({
-    icon: providersIcons[index],
-    ...provider,
-  }));
+  const providers = (tForm.raw("providers") as tProvider[]).map(
+    (provider, index) => ({
+      icon: providersIcons[index],
+      ...provider,
+    }),
+  );
 
   const authenticationService = new ClsAuthenticationService();
 
@@ -55,57 +55,7 @@ export default function Form() {
     console.log(response);
   }
 
-  function onClick(provider: string) {
-    toast(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-
-    toast.success(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.error(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.info(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.loading(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-    toast.warning(`You're trying to login with ${provider}.`, {
-      description: "This feature is not implemented yet.",
-
-      action: {
-        label: "Undo",
-        onClick: () => console.log("Undo"),
-      },
-    });
-  }
+  function onClick(provider: string) {}
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -200,10 +150,10 @@ export default function Form() {
         <Field className="grid grid-cols-3 gap-6">
           {providers.map((provider) => (
             <Button
-              key={provider.label}
+              key={provider.name}
               variant="outline"
               type="button"
-              onClick={() => onClick(provider.label)}
+              onClick={() => onClick(provider.name)}
             >
               <provider.icon />
             </Button>
@@ -211,14 +161,18 @@ export default function Form() {
         </Field>
 
         <FieldDescription className="w-3/4">
-          {tForm.rich("legal.label", {
+          {tForm.rich("terms-and-policies.label", {
             terms_and_conditions: (chunk) => (
-              <Link href={tForm("legal.terms-and-conditions-href")}>
+              <Link
+                href={tForm("terms-and-policies.terms-and-conditions-href")}
+              >
                 {chunk}
               </Link>
             ),
             privacy_policy: (chunk) => (
-              <Link href={tForm("legal.privacy-policy-href")}>{chunk}</Link>
+              <Link href={tForm("terms-and-policies.privacy-policy-href")}>
+                {chunk}
+              </Link>
             ),
           })}
         </FieldDescription>

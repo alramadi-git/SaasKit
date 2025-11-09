@@ -13,6 +13,8 @@ import {
 import Form from "@/components/locals/base/authentication/login/form";
 import { FullHDImage } from "@/components/locals/blocks/image";
 
+export const dynamic = "force-static";
+
 export default async function Page() {
   const tPage = await getTranslations("app.authentication.login.page");
 

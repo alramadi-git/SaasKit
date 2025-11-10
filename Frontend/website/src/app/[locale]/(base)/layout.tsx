@@ -18,7 +18,7 @@ export default async function Layout({ children }: LayoutProps<"/[locale]">) {
   return (
     <Fragment>
       <Header />
-      <main>{children}</main>
+      {children}
       <Footer />
     </Fragment>
   );

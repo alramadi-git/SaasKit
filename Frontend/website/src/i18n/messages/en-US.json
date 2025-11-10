@@ -1,7 +1,7 @@
 {
   "settings": {
-    "lang": "en-US",
-    "dir": "ltr"
+    "language": "en-US",
+    "direction": "ltr"
   },
 
   "components": {
@@ -575,8 +575,6 @@
       }
     },
 
-    "page": {},
-
     "authentication": {
       "login": {
         "page": {
@@ -645,6 +643,54 @@
     },
 
     "admin": {
+      "dashboard": {
+        "layout": {
+          "metadata": {
+            "title": {
+              "default": "Admin | SaasKit Dashboard",
+              "template": "%s | SaasKit Dashboard"
+            },
+            "description": "The admin dashboard for SaasKit."
+          },
+
+          "sidebar": {
+            "header": {
+              "account": {
+                "default-avatar": {
+                  "src": "https://ik.imagekit.io/alramadi/saas-kit/website/avatar.png"
+                },
+
+                "settings": {
+                  "logout": "Logout"
+                }
+              }
+            },
+
+            "content": {},
+
+            "footer": {
+              "newsletter": {
+                "label": "Subscribe to our newsletter",
+                "description": "Opt-in to receive updates and news about SaasKit.",
+
+                "form": {
+                  "email": {
+                    "placeholder": "Your email address",
+                    "aria-label": "Your email address"
+                  },
+
+                  "submit": {
+                    "aria-label": "Subscribe now"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "page": {}
+      },
+
       "authentication": {
         "login": {
           "page": {
@@ -653,6 +699,7 @@
                 "title": "Welcome back",
                 "description": "Login to your account to continue using SaasKit."
               },
+
               "content": {
                 "form": {
                   "title": "Login to your account",
@@ -689,6 +736,7 @@
                   ]
                 }
               },
+
               "footer": {
                 "illustration": {
                   "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",

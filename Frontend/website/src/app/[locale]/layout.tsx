@@ -3,13 +3,16 @@ import "./../globals.css";
 import { eEnvironment } from "@/enums/environment";
 
 import { Cairo } from "next/font/google";
+import { getTranslations, getMessages } from "next-intl/server";
 import { cn } from "@/utilities/cn";
-import { getMessages, getTranslations } from "next-intl/server";
 
 import ThemeProvider from "@/components/locals/providers/theme-provider";
-import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { Toaster } from "@/components/shadcn/sonner";
+
+import Script from "next/script";
+
+export const dynamic = "force-static";
 
 const cairo = Cairo({
   weight: ["300", "400", "500", "700", "900"],
@@ -21,24 +24,17 @@ const cairo = Cairo({
   subsets: ["latin"],
 });
 
-export const dynamic = "force-static";
-
-export default async function Layout({
-  children,
-  params,
-}: LayoutProps<"/[locale]">) {
-  const { locale } = await params;
-
+export default async function Layout({ children }: LayoutProps<"/[locale]">) {
   const [tSettings, messages] = await Promise.all([
     getTranslations("settings"),
-    getMessages({ locale }),
+    getMessages(),
   ]);
 
   return (
     <html
       suppressHydrationWarning
-      lang={tSettings("lang")}
-      dir={tSettings("dir")}
+      lang={tSettings("language")}
+      dir={tSettings("direction")}
     >
       <body className={cn(cairo.className, "antialiased")}>
         <ThemeProvider
@@ -47,10 +43,12 @@ export default async function Layout({
           defaultTheme="system"
           attribute="class"
         >
-          <NextIntlClientProvider locale={locale} messages={messages}>
+          <NextIntlClientProvider messages={messages}>
             {children}
             <Toaster
-              position={tSettings("dir") === "ltr" ? "top-right" : "top-left"}
+              position={
+                tSettings("direction") === "ltr" ? "top-right" : "top-left"
+              }
             />
           </NextIntlClientProvider>
         </ThemeProvider>

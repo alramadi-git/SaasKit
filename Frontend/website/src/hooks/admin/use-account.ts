@@ -3,7 +3,7 @@
 import { deleteCookie, getCookie } from "cookies-next/client";
 
 import { useEffect } from "react";
-import useAccountStore from "@/stores/base/account-store";
+import useAccountStore from "@/stores/admin/account-store";
 
 export function useAccount() {
   const account = useAccountStore((state) => state.account);
@@ -12,7 +12,7 @@ export function useAccount() {
   const logout = useAccountStore((store) => store.logout);
 
   useEffect(() => {
-    const cookie = getCookie("user-account");
+    const cookie = getCookie("admin-account");
     if (cookie === undefined) return;
 
     const cookieAccount = JSON.parse(cookie);
@@ -22,8 +22,8 @@ export function useAccount() {
   function _logout() {
     if (account === null) return;
 
-    deleteCookie("user-account");
-    deleteCookie("user-token");
+    deleteCookie("admin-account");
+    deleteCookie("admin-token");
 
     logout();
   }

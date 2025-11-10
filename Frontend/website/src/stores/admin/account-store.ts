@@ -1,18 +1,18 @@
 import { create } from "zustand";
 
 import { tNullable } from "@/types/nullish";
-import { tUserModel } from "@/models/base/user";
+import { tAdminModel } from "@/models/admin/admin";
 
 type tUseAccountStore = {
-  account: tNullable<tUserModel>;
-  login: (account: tUserModel) => void;
+  account: tNullable<tAdminModel>;
+  login: (account: tAdminModel) => void;
   logout: () => void;
 };
 const useAccountStore = create<tUseAccountStore>((set, get) => {
   return {
     account: null,
 
-    login: (account: tUserModel) => {
+    login: (account: tAdminModel) => {
       if (get().account) return;
 
       set({ account });

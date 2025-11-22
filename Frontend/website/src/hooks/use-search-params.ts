@@ -3,13 +3,13 @@
 import type { tUndefinable } from "@/types/nullish";
 
 import { useRouter, usePathname } from "@/i18n/navigation";
-import { useSearchParams as useSearchParamsNextJS } from "next/navigation";
+import { useSearchParams as useNextJSSearchParams } from "next/navigation";
 
 export function useSearchParams() {
   const router = useRouter();
 
   const pathname = usePathname();
-  let searchParams = new URLSearchParams(useSearchParamsNextJS().toString());
+  let searchParams = new URLSearchParams(useNextJSSearchParams().toString());
 
   function getOne(key: string): tUndefinable<string> {
     return searchParams.get(key) ?? undefined;
@@ -21,6 +21,17 @@ export function useSearchParams() {
   function getMany(keys: string[]): tUndefinable<string>[] {
     const values: tUndefinable<string>[] = [];
     for (const key of keys) values.push(getOne(key));
+
+    return values;
+  }
+  function getManyOrDefault(keys: string[], defaults: string[]): string[] {
+    if (keys.length !== defaults.length) {
+      throw new Error("keys and defaults must have the same length");
+    }
+
+    const values = getMany(keys).map(
+      (value, index) => value ?? defaults[index],
+    );
 
     return values;
   }
@@ -56,6 +67,7 @@ export function useSearchParams() {
     getOne,
     getOneOrDefault,
     getMany,
+    getManyOrDefault,
     setOne,
     setMany,
     deleteOne,

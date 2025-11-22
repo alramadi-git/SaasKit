@@ -15,7 +15,13 @@ import Script from "next/script";
 export const dynamic = "force-static";
 
 const cairo = Cairo({
-  weight: ["300", "400", "500", "700", "900"],
+  weight: [
+    "300" /** light   */,
+    "400" /** normal  */,
+    "500" /** medium  */,
+    "700" /** bold    */,
+    "900" /** black   */,
+  ],
   style: ["normal"],
   display: "swap",
   preload: true,

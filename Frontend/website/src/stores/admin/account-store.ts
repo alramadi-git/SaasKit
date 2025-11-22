@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 import { tNullable } from "@/types/nullish";
-import { tAdminModel } from "@/models/admin/admin";
+import { tAdminModel } from "@/models/[admin]/admin";
 
 type tUseAccountStore = {
   account: tNullable<tAdminModel>;

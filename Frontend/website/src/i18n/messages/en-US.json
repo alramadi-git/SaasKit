@@ -6,23 +6,12 @@
 
   "components": {
     "account": {
-      "unauthenticated": "Login now",
-
-      "authenticated": {
-        "navigation-menu": [
-          {
-            "href": "/user/profile",
-            "label": "Profile"
-          }
-        ],
-
-        "logout": "Logout"
-      }
+      "logout": "Logout"
     },
 
     "languages": {
       "placeholder": "Search your language...",
-      "when-empty": "No matching languages found",
+      "when-no-result": "No matching languages found",
 
       "continents": [
         {
@@ -140,21 +129,7 @@
             }
           ]
         }
-      ],
-
-      "default-language": {
-        "dir": "ltr",
-        "locale": "en-US",
-        "flag": "🇺🇸",
-        "label": "English (United States)"
-      }
-    },
-
-    "fields": {
-      "password": {
-        "aria-controls": "password",
-        "aria-label": "{isVisible, select, true {Hide password} other {Show password}}"
-      }
+      ]
     }
   },
 
@@ -204,7 +179,7 @@
           "images": {
             "width": 1200,
             "height": 630,
-            "url": "https://ik.imagekit.io/alramadi/saas-kit/website/open-graphs/en-us.png",
+            "url": "https://ik.imagekit.io/alramadi/saas-kit/website/placeholder.png",
             "alt": "SaasKit open graph image"
           }
         },
@@ -220,148 +195,25 @@
 
       "header": {
         "logo": {
-          "href": "/",
-
-          "src": "https://ik.imagekit.io/alramadi/saas-kit/website/logo.png",
-          "alt": "SaasKit logo"
+          "url": "https://ik.imagekit.io/alramadi/saas-kit/website/logo.png",
+          "alternate": "SaasKit logo"
         },
 
         "account": {
-          "not-logged-in": "Login now",
+          "unauthenticated": {
+            "label": "Login now"
+          },
 
-          "logged-in": {
-            "navigation": [
-              {
-                "href": "/user/profile",
-                "label": "Profile"
-              }
-            ],
-
-            "logout": "Logout"
+          "authenticated": {
+            "navigation-menu": [
+              [
+                {
+                  "url": "/user/profile",
+                  "label": "Profile"
+                }
+              ]
+            ]
           }
-        },
-
-        "languages": {
-          "placeholder": "Search your language...",
-          "when-empty": "No matching languages found",
-
-          "continents": [
-            {
-              "label": "Africa",
-              "countries": [
-                {
-                  "dir": "rtl",
-                  "locale": "ar-MA",
-                  "flag": "🇲🇦",
-                  "label": "العربية (المغرب)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "en-NG",
-                  "flag": "🇳🇬",
-                  "label": "English (Nigeria)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "en-ZA",
-                  "flag": "🇿🇦",
-                  "label": "English (South Africa)"
-                }
-              ]
-            },
-            {
-              "label": "America",
-              "countries": [
-                {
-                  "dir": "ltr",
-                  "locale": "en-CA",
-                  "flag": "🇨🇦",
-                  "label": "English (Canada)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "es-MX",
-                  "flag": "🇲🇽",
-                  "label": "Español (México)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "en-US",
-                  "flag": "🇺🇸",
-                  "label": "English (United States)"
-                }
-              ]
-            },
-            {
-              "label": "Asia",
-              "countries": [
-                {
-                  "dir": "ltr",
-                  "locale": "zh-CN",
-                  "flag": "🇨🇳",
-                  "label": "中文 (中国)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "hi-IN",
-                  "flag": "🇮🇳",
-                  "label": "हिन्दी (भारत)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "ja-JP",
-                  "flag": "🇯🇵",
-                  "label": "日本語 (日本)"
-                },
-                {
-                  "dir": "rtl",
-                  "locale": "ar-SA",
-                  "flag": "🇸🇦",
-                  "label": "العربية (المملكة العربية السعودية)"
-                }
-              ]
-            },
-            {
-              "label": "Europe",
-              "countries": [
-                {
-                  "dir": "ltr",
-                  "locale": "fr-FR",
-                  "flag": "🇫🇷",
-                  "label": "Français (France)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "de-DE",
-                  "flag": "🇩🇪",
-                  "label": "Deutsch (Deutschland)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "en-GB",
-                  "flag": "🇬🇧",
-                  "label": "English (United Kingdom)"
-                }
-              ]
-            },
-            {
-              "label": "Oceania",
-              "countries": [
-                {
-                  "dir": "ltr",
-                  "locale": "en-AU",
-                  "flag": "🇦🇺",
-                  "label": "English (Australia)"
-                },
-                {
-                  "dir": "ltr",
-                  "locale": "en-NZ",
-                  "flag": "🇳🇿",
-                  "label": "English (New Zealand)"
-                }
-              ]
-            }
-          ]
         },
 
         "desktop-navigation-menu": [
@@ -372,25 +224,25 @@
             "sub-navigation-menu": [
               {
                 "id": 1,
-                "href": "/",
+                "url": "/",
                 "label": "Home",
                 "description": "The main page featuring the latest news and highlights."
               },
               {
                 "id": 2,
-                "href": "/blogs",
+                "url": "/blogs",
                 "label": "Blogs",
                 "description": "Articles, tips, and fresh content about the world of software and startups."
               },
               {
                 "id": 3,
-                "href": "/about",
+                "url": "/about",
                 "label": "About Us",
                 "description": "Learn about our vision, mission, and the team behind SaasKit."
               },
               {
                 "id": 4,
-                "href": "/contact",
+                "url": "/contact",
                 "label": "Contact Us",
                 "description": "Get in touch with us via forms, email, or phone."
               }
@@ -398,32 +250,37 @@
           }
         ],
 
-        "mobile-navigation-menu": [
-          {
-            "id": 1,
-            "href": "/",
-            "label": "Home",
-            "description": "The main page featuring the latest news and highlights."
-          },
-          {
-            "id": 2,
-            "href": "/blogs",
-            "label": "Blogs",
-            "description": "Articles, tips, and fresh content about the world of software and startups."
-          },
-          {
-            "id": 3,
-            "href": "/about",
-            "label": "About Us",
-            "description": "Learn about our vision, mission, and the team behind SaasKit."
-          },
-          {
-            "id": 4,
-            "href": "/contact",
-            "label": "Contact Us",
-            "description": "Get in touch with us via forms, email, or phone."
-          }
-        ]
+        "mobile": {
+          "title": "Mobile Navigation",
+          "description": "Quick access to the main sections of our website for mobile users.",
+
+          "navigation-menu": [
+            {
+              "id": 1,
+              "url": "/",
+              "label": "Home",
+              "description": "The main page featuring the latest news and highlights."
+            },
+            {
+              "id": 2,
+              "url": "/blogs",
+              "label": "Blogs",
+              "description": "Articles, tips, and fresh content about the world of software and startups."
+            },
+            {
+              "id": 3,
+              "url": "/about",
+              "label": "About Us",
+              "description": "Learn about our vision, mission, and the team behind SaasKit."
+            },
+            {
+              "id": 4,
+              "url": "/contact",
+              "label": "Contact Us",
+              "description": "Get in touch with us via forms, email, or phone."
+            }
+          ]
+        }
       },
 
       "footer": {
@@ -440,24 +297,24 @@
             "label": "Our Services",
             "sub-navigation-menu": [
               {
-                "label": "Platform Features",
-                "href": "#"
+                "url": "#",
+                "label": "Platform Features"
               },
               {
-                "label": "Available Solutions",
-                "href": "#"
+                "url": "#",
+                "label": "Available Solutions"
               },
               {
-                "label": "Our Clients",
-                "href": "#"
+                "url": "#",
+                "label": "Our Clients"
               },
               {
-                "label": "Pricing Plans",
-                "href": "#"
+                "url": "#",
+                "label": "Pricing Plans"
               },
               {
-                "label": "Support",
-                "href": "#"
+                "url": "#",
+                "label": "Support"
               }
             ]
           },
@@ -465,32 +322,32 @@
             "label": "Our Options",
             "sub-navigation-menu": [
               {
-                "label": "For Startups",
-                "href": "#"
+                "url": "#",
+                "label": "For Startups"
               },
               {
-                "label": "For Freelancers",
-                "href": "#"
+                "url": "#",
+                "label": "For Freelancers"
               },
               {
-                "label": "For Enterprises",
-                "href": "#"
+                "url": "#",
+                "label": "For Enterprises"
               },
               {
-                "label": "For Students",
-                "href": "#"
+                "url": "#",
+                "label": "For Students"
               },
               {
-                "label": "Collaboration & Teamwork",
-                "href": "#"
+                "url": "#",
+                "label": "Collaboration & Teamwork"
               },
               {
-                "label": "Design & Creativity",
-                "href": "#"
+                "url": "#",
+                "label": "Design & Creativity"
               },
               {
-                "label": "Resource Management",
-                "href": "#"
+                "url": "#",
+                "label": "Resource Management"
               }
             ]
           },
@@ -498,24 +355,24 @@
             "label": "About the Company",
             "sub-navigation-menu": [
               {
-                "label": "About Us",
-                "href": "/about"
+                "url": "/about",
+                "label": "About Us"
               },
               {
-                "label": "Careers",
-                "href": "/careers"
+                "url": "/careers",
+                "label": "Careers"
               },
               {
-                "label": "Blogs",
-                "href": "/blogs"
+                "url": "/blogs",
+                "label": "Blogs"
               },
               {
-                "label": "Contact Us",
-                "href": "/contact"
+                "url": "/contact",
+                "label": "Contact Us"
               },
               {
-                "label": "Technical Support",
-                "href": "/support "
+                "url": "/support ",
+                "label": "Technical Support"
               }
             ]
           },
@@ -523,20 +380,20 @@
             "label": "Terms & Policies",
             "sub-navigation-menu": [
               {
-                "label": "Terms & Conditions",
-                "href": "/terms-and-conditions"
+                "url": "/terms-and-conditions",
+                "label": "Terms & Conditions"
               },
               {
-                "label": "Privacy Policy",
-                "href": "/privacy-policy"
+                "url": "/privacy-policy",
+                "label": "Privacy Policy"
               },
               {
-                "label": "Cookie Policy",
-                "href": "/cookie-policy"
+                "url": "/cookie-policy",
+                "label": "Cookie Policy"
               },
               {
-                "label": "Security & Privacy",
-                "href": "/security-and-privacy"
+                "url": "/security-and-privacy",
+                "label": "Security & Privacy"
               }
             ]
           }
@@ -546,32 +403,21 @@
           "label": "<copyright></copyright> <time></time> <span>SaasKit LLC, All rights reserved.</span>",
 
           "socials": [
-            {
-              "aria-label": "LinkedIn",
-              "href": "https://linkedin.com/in/saaskit"
-            },
-            {
-              "aria-label": "X/Twitter",
-              "href": "https://x.com/saaskit"
-            },
-            {
-              "aria-label": "Facebook",
-              "href": "https://www.facebook.com/saaskit"
-            },
-            {
-              "aria-label": "Instagram",
-              "href": "https://www.instagram.com/saaskit"
-            },
-            {
-              "aria-label": "Youtube",
-              "href": "https://www.youtube.com/@saaskit"
-            },
-            {
-              "aria-label": "TikTok",
-              "href": "https://www.tiktok.com/@saaskit"
-            }
+            "https://linkedin.com/in/saaskit",
+            "https://x.com/saaskit",
+            "https://www.facebook.com/saaskit",
+            "https://www.instagram.com/saaskit",
+            "https://www.youtube.com/@saaskit",
+            "https://www.tiktok.com/@saaskit"
           ]
         }
+      }
+    },
+
+    "not-found": {
+      "illustration": {
+        "src": "https://ik.imagekit.io/alramadi/saas-kit/website/not-found-page.png",
+        "alt": "Not Found"
       }
     },
 
@@ -600,13 +446,13 @@
 
                   "forgot-your-password": {
                     "label": "Forgot your password?",
-                    "href": "/authentication/forgot-password"
+                    "url": "/authentication/forgot-password"
                   }
                 },
 
                 "submit": "login",
                 "register": {
-                  "href": "/authentication/register",
+                  "url": "/authentication/register",
                   "label": "Don't have an account? <link>Create one</link>"
                 },
 
@@ -624,8 +470,8 @@
                 ],
 
                 "terms-and-policies": {
-                  "terms-and-conditions-href": "/terms-and-conditions",
-                  "privacy-policy-href": "/privacy-policy",
+                  "terms-and-conditions-url": "/terms-and-conditions",
+                  "privacy-policy-url": "/privacy-policy",
                   "label": "By logging in, you agree to the <terms_and_conditions>Terms & Conditions</terms_and_conditions> and <privacy_policy>Privacy Policy</privacy_policy>."
                 }
               }
@@ -633,7 +479,7 @@
 
             "footer": {
               "illustration": {
-                "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",
+                "src": "https://ik.imagekit.io/alramadi/saas-kit/website/placeholder.png",
                 "alt": "placeholder"
               }
             }
@@ -648,7 +494,7 @@
           "metadata": {
             "title": {
               "default": "Admin | SaasKit Dashboard",
-              "template": "%s | SaasKit Dashboard"
+              "template": "%s | Admin Dashboard — SaasKit"
             },
             "description": "The admin dashboard for SaasKit."
           },
@@ -656,13 +502,16 @@
           "sidebar": {
             "header": {
               "account": {
-                "default-avatar": {
-                  "src": "https://ik.imagekit.io/alramadi/saas-kit/website/avatar.png"
-                },
-
-                "settings": {
-                  "logout": "Logout"
-                }
+                "navigation-menu": [
+                  {
+                    "url": "/admin/dashboard/profile",
+                    "label": "Profile"
+                  },
+                  {
+                    "url": "/admin/dashboard/notifications",
+                    "label": "Notifications"
+                  }
+                ]
               }
             },
 
@@ -675,13 +524,10 @@
 
                 "form": {
                   "email": {
-                    "placeholder": "Your email address",
-                    "aria-label": "Your email address"
+                    "placeholder": "admin@saaskit.com"
                   },
 
-                  "submit": {
-                    "aria-label": "Subscribe now"
-                  }
+                  "submit": "Subscribe now"
                 }
               }
             }
@@ -716,7 +562,7 @@
 
                     "forgot-your-password": {
                       "label": "Forgot your password?",
-                      "href": "/admin/authentication/forgot-password"
+                      "url": "/admin/authentication/forgot-password"
                     }
                   },
 
@@ -739,7 +585,7 @@
 
               "footer": {
                 "illustration": {
-                  "src": "https://ik.imagekit.io/alramadi/saas-kit/website/illustrations/placeholder.png",
+                  "src": "https://ik.imagekit.io/alramadi/saas-kit/website/placeholder.png",
                   "alt": "placeholder"
                 }
               }

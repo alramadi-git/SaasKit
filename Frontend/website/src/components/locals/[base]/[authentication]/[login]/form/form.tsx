@@ -25,7 +25,7 @@ import { Link } from "@/components/locals/blocks/link";
 type tProvider = {
   name: string;
 };
-const providersIcons = [FaApple, FaGoogle, FaMeta];
+const providersIcons = [FaApple({}), FaGoogle({}), FaMeta({})];
 
 export default function Form() {
   const id = useId();
@@ -40,12 +40,7 @@ export default function Form() {
   const tForm = useTranslations(
     "app.authentication.login.page.card.content.form",
   );
-  const providers = (tForm.raw("providers") as tProvider[]).map(
-    (provider, index) => ({
-      icon: providersIcons[index],
-      ...provider,
-    }),
-  );
+  const providers: tProvider[] = tForm.raw("providers");
 
   const authenticationService = new ClsAuthenticationService();
 
@@ -104,7 +99,7 @@ export default function Form() {
                   </FieldLabel>
 
                   <Link
-                    href={tForm("password.forgot-your-password.href")}
+                    href={tForm("password.forgot-your-password.url")}
                     className="text-muted-foreground hover:text-foreground ml-auto text-sm underline-offset-2 hover:underline"
                   >
                     {tForm("password.forgot-your-password.label")}
@@ -137,7 +132,7 @@ export default function Form() {
           <FieldDescription>
             {tForm.rich("register.label", {
               link: (chunk) => (
-                <Link href={tForm("register.href")}>{chunk}</Link>
+                <Link href={tForm("register.url")}>{chunk}</Link>
               ),
             })}
           </FieldDescription>
@@ -148,14 +143,14 @@ export default function Form() {
         </FieldSeparator>
 
         <Field className="grid grid-cols-3 gap-6">
-          {providers.map((provider) => (
+          {providers.map((provider, index) => (
             <Button
               key={provider.name}
               variant="outline"
               type="button"
               onClick={() => onClick(provider.name)}
             >
-              <provider.icon />
+              {providersIcons[index]}
             </Button>
           ))}
         </Field>
@@ -164,13 +159,13 @@ export default function Form() {
           {tForm.rich("terms-and-policies.label", {
             terms_and_conditions: (chunk) => (
               <Link
-                href={tForm("terms-and-policies.terms-and-conditions-href")}
+                href={tForm("terms-and-policies.terms-and-conditions-url")}
               >
                 {chunk}
               </Link>
             ),
             privacy_policy: (chunk) => (
-              <Link href={tForm("terms-and-policies.privacy-policy-href")}>
+              <Link href={tForm("terms-and-policies.privacy-policy-url")}>
                 {chunk}
               </Link>
             ),

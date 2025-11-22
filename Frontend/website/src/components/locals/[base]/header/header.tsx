@@ -28,10 +28,10 @@ export default async function Header() {
           <MobileNavigation />
 
           {/** Logo */}
-          <Link href={tHeader("logo.href")} className="border-s ps-3">
+          <Link href="/" className="border-s ps-3">
             <FullHDImage
-              src={tHeader("logo.src")}
-              alt={tHeader("logo.alt")}
+              src={tHeader("logo.url")}
+              alt={tHeader("logo.alternate")}
               className="size-8 object-contain invert"
             />
           </Link>

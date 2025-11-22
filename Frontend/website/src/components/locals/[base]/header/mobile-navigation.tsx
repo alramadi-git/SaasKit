@@ -18,22 +18,22 @@ import {
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Container } from "@/components/locals/blocks/typography";
 import { Button } from "@/components/shadcn/button";
+import { Link } from "../../blocks/link";
 // import { Link } from "@/components/locals/blocks/link";
 
-// type tNavigationMenuItem = {
-//   id: number;
-//   href: string;
-//   label: string;
-//   description: string;
-// };
+type tNavigationMenuItem = {
+  id: number;
+  url: string;
+  label: string;
+  description: string;
+};
 
 export default async function MobileNavigation() {
   const tSettings = await getTranslations("settings");
 
-  // const tHeader = await getTranslations("app.layout.header");
-  // const tNavigationMenuItems: tNavigationMenuItem[] = tHeader.raw(
-  //   "mobile-navigation-menu",
-  // );
+  const tHeader = await getTranslations("app.layout.header.mobile");
+  const tNavigationMenuItems: tNavigationMenuItem[] =
+    tHeader.raw("navigation-menu");
 
   return (
     <Sheet>
@@ -43,17 +43,14 @@ export default async function MobileNavigation() {
         </Button>
       </SheetTrigger>
       <SheetContent
-        side={tSettings("dir") === "ltr" ? "left" : "right"}
+        side={tSettings("direction") === "ltr" ? "left" : "right"}
         className="w-full"
       >
-        <Container className="flex h-full flex-col gap-4 p-4">
-          <SheetHeader className="flex flex-row gap-2 p-0">
+        <Container className="flex h-full flex-col gap-6 p-4">
+          <SheetHeader className="flex flex-row flex-wrap gap-2 p-0">
             <VisuallyHidden>
-              <SheetTitle>Edit profile</SheetTitle>
-              <SheetDescription>
-                Make changes to your profile here. Click save when you&apos;re
-                done.
-              </SheetDescription>
+              <SheetTitle>{tHeader("title")}</SheetTitle>
+              <SheetDescription>{tHeader("description")}</SheetDescription>
             </VisuallyHidden>
 
             <SheetClose asChild>
@@ -62,9 +59,19 @@ export default async function MobileNavigation() {
               </Button>
             </SheetClose>
 
-            <Languages align="start" />
-            <Account align="start" />
+            <Languages align="end" className="grow" />
+            <Account align="end" />
           </SheetHeader>
+
+          <ul>
+            {tNavigationMenuItems.map((item) => (
+              <li key={item.id}>
+                <Button asChild variant="ghost" className="w-full text-lg">
+                  <Link href={item.url}>{item.label}</Link>
+                </Button>
+              </li>
+            ))}
+          </ul>
         </Container>
       </SheetContent>
     </Sheet>

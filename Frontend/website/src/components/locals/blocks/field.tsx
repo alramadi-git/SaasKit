@@ -1,11 +1,9 @@
 "use client";
 
 import { tEmail, tPassword } from "@/validations/authentication";
+import { ComponentProps, useState, Activity } from "react";
 
 import { cn } from "@/utilities/cn";
-
-import { ComponentProps, useState } from "react";
-import { useTranslations } from "next-intl";
 
 import {
   FieldValues,
@@ -29,10 +27,7 @@ export type tControllerRenderProps<
 };
 
 export type tFieldPassword = {
-  controllerRenderProps: tControllerRenderProps<
-    { password: tPassword },
-    "password"
-  >;
+  controllerRenderProps: tControllerRenderProps<tPassword, "password">;
   inputProps?: Omit<
     tInputProps,
     "ref" | "type" | "name" | "disabled" | "value" | "onChange" | "onBlur"
@@ -42,7 +37,6 @@ export function FieldPassword({
   controllerRenderProps,
   inputProps: { id, className, ...inputProps } = {},
 }: tFieldPassword) {
-  const tPassword = useTranslations("components.fields.password");
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   function toggleVisibility() {
@@ -61,10 +55,8 @@ export function FieldPassword({
 
       <button
         aria-pressed={isVisible}
-        aria-label={tPassword("aria-label", {
-          isVisible: isVisible ? "true" : "false",
-        })}
-        aria-controls={tPassword("aria-controls")}
+        aria-label={isVisible ? "Hide" : "Show"}
+        aria-controls="password"
         type="button"
         className={cn(
           "text-muted-foreground/80 hover:text-foreground absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
@@ -75,18 +67,20 @@ export function FieldPassword({
         )}
         onClick={toggleVisibility}
       >
-        {isVisible ? (
+        <Activity mode={isVisible ? "visible" : "hidden"}>
           <LuEyeOff size={16} aria-hidden="true" />
-        ) : (
+        </Activity>
+
+        <Activity mode={isVisible ? "hidden" : "visible"}>
           <LuEye size={16} aria-hidden="true" />
-        )}
+        </Activity>
       </button>
     </div>
   );
 }
 
 export type tFieldEmail = {
-  controllerRenderProps: tControllerRenderProps<{ email: tEmail }, "email">;
+  controllerRenderProps: tControllerRenderProps<tEmail, "email">;
   inputProps?: Omit<
     tInputProps,
     "ref" | "type" | "name" | "disabled" | "value" | "onChange" | "onBlur"

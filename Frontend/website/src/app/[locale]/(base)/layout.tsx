@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { Fragment } from "react";
-import Header from "@/components/locals/base/header/header";
-import Footer from "@/components/locals/base/footer/footer";
+import Header from "@/components/locals/[base]/header/header";
+import Footer from "@/components/locals/[base]/footer/footer";
 
 export const dynamic = "force-static";
 export async function generateMetadata({}: LayoutProps<"/[locale]">): Promise<Metadata> {

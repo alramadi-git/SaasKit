@@ -1,13 +1,13 @@
 import { tCredentials } from "@/validations/authentication";
 
 import { tAccountModel } from "@/models/account";
-import { tUserModel } from "@/models/base/user";
+import { tUserModel } from "@/models/[base]/user";
 import { tSuccessOneModel, tFailedModel } from "@/models/response";
 import { tSuccessOneService, tResponseOneService } from "../response";
 
 import { ClsAbstractService, ClsErrorService } from "../service";
 
-export class ClsAuthenticationService extends ClsAbstractService {
+class ClsAuthenticationService extends ClsAbstractService {
   public constructor() {
     super("/authentication");
   }
@@ -51,3 +51,5 @@ export class ClsAuthenticationService extends ClsAbstractService {
     return await this.catcher(async () => await this._login(credentials));
   }
 }
+
+export { ClsAuthenticationService };

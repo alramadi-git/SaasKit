@@ -1,11 +1,12 @@
-import { ZodError } from "zod";
 import {
   tSuccessOneService,
   tSuccessManyService,
   tFailedService,
 } from "./response";
 
-export class ClsErrorService extends Error {
+import { ZodError } from "zod";
+
+class ClsErrorService extends Error {
   public statusCode: tFailedService["statusCode"];
   public statusText: tFailedService["statusText"];
   public issues: tFailedService["issues"];
@@ -47,7 +48,7 @@ export class ClsErrorService extends Error {
   }
 }
 
-export abstract class ClsAbstractService {
+abstract class ClsAbstractService {
   protected readonly _apiUrl: string;
 
   protected constructor(path: string) {
@@ -94,3 +95,5 @@ export abstract class ClsAbstractService {
     }
   }
 }
+
+export { ClsErrorService, ClsAbstractService };

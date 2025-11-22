@@ -8,28 +8,39 @@ import useAccountStore from "@/stores/admin/account-store";
 export function useAccount() {
   const account = useAccountStore((state) => state.account);
 
-  const login = useAccountStore((store) => store.login);
-  const logout = useAccountStore((store) => store.logout);
+  const storeLogin = useAccountStore((store) => store.login);
+  const storeLogout = useAccountStore((store) => store.logout);
 
   useEffect(() => {
     const cookie = getCookie("admin-account");
+    storeLogin({
+      uuid: "550e8400-e29b-41d4-a716-446655440000",
+      avatar: {
+        url: "https://i.pravatar.ccss/150?img=3",
+      },
+      username: "john doe",
+      dateOfBirth: "1990-05-15",
+      email: "john.doe@example.com",
+      updatedAt: "2025-11-22T12:34:56Z",
+      createdAt: "2023-03-01T08:00:00Z",
+    });
     if (cookie === undefined) return;
 
     const cookieAccount = JSON.parse(cookie);
-    login(cookieAccount);
-  }, [login]);
+    storeLogin(cookieAccount);
+  }, [storeLogin]);
 
-  function _logout() {
+  function logout() {
     if (account === null) return;
 
     deleteCookie("admin-account");
     deleteCookie("admin-token");
 
-    logout();
+    storeLogout();
   }
 
   return {
     account,
-    logout: _logout,
+    logout,
   };
 }

@@ -24,7 +24,7 @@ import { Link } from "@/components/locals/blocks/link";
 type tProvider = {
   name: string;
 };
-const providersIcons = [FaApple, FaGoogle, FaMeta];
+const providersIcons = [FaApple({}), FaGoogle({}), FaMeta({})];
 
 export default function Form() {
   const id = useId();
@@ -103,7 +103,7 @@ export default function Form() {
                   </FieldLabel>
 
                   <Link
-                    href={tForm("password.forgot-your-password.href")}
+                    href={tForm("password.forgot-your-password.url")}
                     className="text-muted-foreground hover:text-foreground ml-auto text-sm underline-offset-2 hover:underline"
                   >
                     {tForm("password.forgot-your-password.label")}
@@ -139,14 +139,14 @@ export default function Form() {
         </FieldSeparator>
 
         <Field className="grid grid-cols-3 gap-6">
-          {providers.map((provider) => (
+          {providers.map((provider, index) => (
             <Button
               key={provider.name}
               variant="outline"
               type="button"
               onClick={() => onClick(provider.name)}
             >
-              <provider.icon />
+              {providersIcons[index]}
             </Button>
           ))}
         </Field>

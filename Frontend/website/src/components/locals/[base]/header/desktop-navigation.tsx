@@ -13,7 +13,7 @@ import { Link } from "@/components/locals/blocks/link";
 
 type tSubNavigationMenuItem = {
   id: number;
-  href: string;
+  url: string;
   label: string;
   description: string;
 };
@@ -35,7 +35,7 @@ function SubNavigationMenuItem({ item }: tNavigationMenuItemProps) {
       // the only way to fix it so far is to set asChild to false in production and everything works fine
       // why only in production cuz in development it throws an error <a/> can't have a nested <a/> tag
     >
-      <Link href={item.href}>
+      <Link href={item.url}>
         <span className="leading-none font-medium">{item.label}</span>
         <p className="text-muted-foreground line-clamp-2 text-xs leading-snug">
           {item.description}

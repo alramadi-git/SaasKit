@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { SidebarProvider, SidebarInset } from "@/components/shadcn/sidebar";
-import Sidebar from "@/components/locals/admin/dashboard/sidebar/sidebar";
+import Sidebar from "@/components/locals/[admin]/dashboard/sidebar/sidebar";
 
 import Header from "@/app/[locale]/(dashboard)/admin/dashboard/_components/uis/header/header";
 
@@ -19,7 +19,7 @@ export default async function Layout({
     <SidebarProvider>
       <Sidebar />
       <SidebarInset>
-        <Header />
+        {/* <Header /> */}
         {children}
       </SidebarInset>
     </SidebarProvider>

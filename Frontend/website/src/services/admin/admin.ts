@@ -1,4 +1,4 @@
-import { tCredentials } from "@/validations/authentication";
+import { tCredentials, tEmail } from "@/validations/authentication";
 
 import { tAccountModel } from "@/models/account";
 import { tAdminModel } from "@/models/[admin]/admin";
@@ -7,21 +7,21 @@ import { tSuccessOneService, tResponseOneService } from "../response";
 
 import { ClsAbstractService, ClsErrorService } from "../service";
 
-class ClsAuthenticationService extends ClsAbstractService {
+class ClsAdmin extends ClsAbstractService {
   public constructor() {
-    super("/admin/authentication");
+    super("/admin");
   }
 
-  protected async _login(
-    credentials: tCredentials,
+  protected async _SubscribeToNewsletter(
+    email: tEmail,
   ): Promise<tSuccessOneService<tAccountModel<tAdminModel>>> {
-    const response: Response = await fetch(`${this._apiUrl}/login`, {
+    const response: Response = await fetch(`${this._apiUrl}/newsletter`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify(credentials),
+      body: JSON.stringify(email),
     });
 
     if (!response.ok) {
@@ -37,6 +37,7 @@ class ClsAuthenticationService extends ClsAbstractService {
 
     const responseBody: tSuccessOneModel<tAccountModel<tAdminModel>> =
       await response.json();
+
     return {
       isSuccess: true,
       statusCode: response.status,
@@ -45,11 +46,13 @@ class ClsAuthenticationService extends ClsAbstractService {
     };
   }
 
-  public async login(
-    credentials: tCredentials,
+  public async SubscribeToNewsletter(
+    email: tEmail,
   ): Promise<tResponseOneService<tAccountModel<tAdminModel>>> {
-    return await this.catcher(async () => await this._login(credentials));
+    return await this.catcher(
+      async () => await this._SubscribeToNewsletter(email),
+    );
   }
 }
 
-export { ClsAuthenticationService };
+export { ClsAdmin as ClsAuthenticationService };

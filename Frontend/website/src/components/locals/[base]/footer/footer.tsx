@@ -1,4 +1,6 @@
+import { cn } from "@/utilities/cn";
 import { getTranslations } from "next-intl/server";
+
 import {
   FaRegCopyright,
   FaLinkedinIn,
@@ -8,48 +10,38 @@ import {
   FaTiktok,
   FaYoutube,
 } from "react-icons/fa6";
-import { Link } from "@/components/locals/blocks/link";
-import { FullHDImage } from "@/components/locals/blocks/image";
+
 import {
   sectionClassName,
   Container,
 } from "@/components/locals/blocks/typography";
-import { cn } from "@/utilities/cn";
+import { FullHDImage } from "@/components/locals/blocks/image";
+import { Link } from "@/components/locals/blocks/link";
 
 type tLink = {
   label: string;
-  href: string;
+  url: string;
 };
 type tNavigationMenu = {
   label: string;
   "sub-navigation-menu": tLink[];
 };
 
-type tSocial = {
-  "aria-label": string;
-  href: string;
-};
-
 const today = new Date();
 const socialsIcons = [
-  FaLinkedinIn,
-  FaXTwitter,
-  FaMeta,
-  FaInstagram,
-  FaYoutube,
-  FaTiktok,
+  FaLinkedinIn({ className: "size-4" }),
+  FaXTwitter({ className: "size-4" }),
+  FaMeta({ className: "size-4" }),
+  FaInstagram({ className: "size-4" }),
+  FaYoutube({ className: "size-4" }),
+  FaTiktok({ className: "size-4" }),
 ];
 
 export default async function Footer() {
   const tFooter = await getTranslations("app.layout.footer");
 
   const navigationMenu: tNavigationMenu[] = tFooter.raw("navigation-menu");
-  const socials = (tFooter.raw("outro.socials") as tSocial[]).map(
-    (item, index) => ({
-      icon: socialsIcons[index],
-      ...item,
-    }),
-  );
+  const socialUrls: string[] = tFooter.raw("outro.socials");
 
   return (
     <footer className={cn(sectionClassName, "border-t !pb-0")}>
@@ -82,7 +74,7 @@ export default async function Footer() {
                   {item["sub-navigation-menu"].map((item, index) => (
                     <li key={index}>
                       <Link
-                        href={item.href}
+                        href={item.url}
                         className="text-muted-foreground hover:text-primary block duration-150"
                       >
                         {item.label}
@@ -106,16 +98,15 @@ export default async function Footer() {
             })}
           </p>
           <ul className="flex flex-wrap justify-center gap-3.5">
-            {socials.map((item, index) => (
+            {socialUrls.map((url, index) => (
               <li key={index}>
                 <Link
-                  aria-label={item["aria-label"]}
                   rel="noopener noreferrer"
                   target="_blank"
-                  href={item.href}
+                  href={url}
                   className="text-muted-foreground hover:text-primary block duration-150"
                 >
-                  <item.icon className="size-4" />
+                  {socialsIcons[index]}
                 </Link>
               </li>
             ))}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { ComponentProps, Fragment } from "react";
+import { Activity, ComponentProps, Fragment } from "react";
 
 import { LuCheck, LuChevronDown } from "react-icons/lu";
 import {
@@ -19,6 +19,7 @@ import {
 } from "@/components/shadcn/command";
 import { Button } from "@/components/shadcn/button";
 import { LocaleSwitch } from "@/components/locals/blocks/link";
+import { cn } from "@/utilities/cn";
 
 type tCountry = {
   dir: string;
@@ -31,35 +32,41 @@ type tContinent = {
   countries: tCountry[];
 };
 
-type tLanguagesProps = Omit<ComponentProps<typeof Popover>, "children"> & {
+type tLanguagesProps = Omit<ComponentProps<typeof Button>, "children"> & {
   align?: ComponentProps<typeof PopoverContent>["align"];
 };
-export default function Languages({ align, ...props }: tLanguagesProps) {
+export default function Languages({
+  align,
+  className,
+  ...props
+}: tLanguagesProps) {
   const locale = useLocale();
   const tLanguages = useTranslations("components.languages");
 
   const continents: tContinent[] = tLanguages.raw("continents");
-  const language =
-    continents
-      .find((continent) => {
-        return (
-          continent.countries.find((country) => country.locale === locale) !==
-          undefined
-        );
-      })
-      ?.countries.find((country) => country.locale === locale) ??
-    (tLanguages.raw("default-language") satisfies tCountry);
+  const language = continents
+    .find((continent) => {
+      return (
+        continent.countries.find((country) => country.locale === locale) !==
+        undefined
+      );
+    })!
+    .countries.find((country) => country.locale === locale)!;
 
   return (
-    <Popover {...props}>
+    <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
           role="combobox"
-          className="bg-background hover:bg-background border-input justify-start px-3 font-normal outline-offset-0 outline-none focus-visible:outline-[3px]"
+          variant="outline"
+          className={cn(
+            "bg-background hover:bg-background border-input justify-start px-3 font-normal outline-offset-0 outline-none focus-visible:outline-[3px]",
+            className,
+          )}
+          {...props}
         >
           <span className="text-lg leading-none">{language?.flag}</span>
-          <p>{language?.label}</p>
+          <span>{language?.label}</span>
 
           <LuChevronDown
             size={16}
@@ -70,23 +77,29 @@ export default function Languages({ align, ...props }: tLanguagesProps) {
 
       <PopoverContent
         align={align}
-        className="border-input w-full min-w-[var(--radix-popper-anchor-width)] rounded p-0"
+        className="border-input w-full min-w-[var(--radix-popper-anchor-width)] rounded-sm p-0"
       >
-        <Command className="rounded">
+        <Command className="rounded-sm">
           <CommandInput placeholder={tLanguages("placeholder")} />
 
           <CommandList>
-            <CommandEmpty>{tLanguages("when-empty")}</CommandEmpty>
+            <CommandEmpty>{tLanguages("when-no-result")}</CommandEmpty>
 
             {continents.map((continent) => (
               <CommandGroup key={continent.label} heading={continent.label}>
                 {continent.countries.map((country) => (
                   <Fragment key={country.label}>
-                    {country.locale !== language?.locale && (
+                    <Activity
+                      mode={
+                        country.locale === language.locale
+                          ? "hidden"
+                          : "visible"
+                      }
+                    >
                       <CommandItem
                         asChild
                         value={country.label}
-                        className="cursor-pointer gap-2.5 rounded"
+                        className="cursor-pointer gap-2.5 rounded-sm"
                       >
                         <LocaleSwitch locale={country.locale}>
                           <span className="text-lg leading-none">
@@ -96,12 +109,19 @@ export default function Languages({ align, ...props }: tLanguagesProps) {
                           <span dir={country.dir} className="line-clamp-1">
                             {country.label}
                           </span>
-                          {language?.locale === country.locale && (
+
+                          <Activity
+                            mode={
+                              language?.locale === country.locale
+                                ? "visible"
+                                : "hidden"
+                            }
+                          >
                             <LuCheck size={16} className="ml-auto" />
-                          )}
+                          </Activity>
                         </LocaleSwitch>
                       </CommandItem>
-                    )}
+                    </Activity>
                   </Fragment>
                 ))}
               </CommandGroup>

@@ -10,7 +10,7 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/shadcn/card";
-import Form from "@/components/locals/admin/authentication/login/form";
+import Form from "@/components/locals/[admin]/authentication/login/form";
 import { FullHDImage } from "@/components/locals/blocks/image";
 
 export default async function Page() {
@@ -18,7 +18,7 @@ export default async function Page() {
 
   return (
     <main className="relative h-dvh overflow-hidden">
-      <GridPattern className="top-1/2 left-1/2 size-[900px] -translate-1/2 skew-y-12 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]" />
+      <GridPattern className="top-1/2 left-1/2 -z-10 size-[900px] -translate-1/2 skew-y-12 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]" />
 
       <Section className="flex size-full items-center justify-center">
         <Container className="flex items-center justify-center">

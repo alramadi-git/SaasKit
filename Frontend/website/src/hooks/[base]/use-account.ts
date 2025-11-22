@@ -8,28 +8,28 @@ import useAccountStore from "@/stores/base/account-store";
 export function useAccount() {
   const account = useAccountStore((state) => state.account);
 
-  const login = useAccountStore((store) => store.login);
-  const logout = useAccountStore((store) => store.logout);
+  const storeLogin = useAccountStore((store) => store.login);
+  const storeLogout = useAccountStore((store) => store.logout);
 
   useEffect(() => {
     const cookie = getCookie("user-account");
     if (cookie === undefined) return;
 
     const cookieAccount = JSON.parse(cookie);
-    login(cookieAccount);
-  }, [login]);
+    storeLogin(cookieAccount);
+  }, [storeLogin]);
 
-  function _logout() {
+  function logout() {
     if (account === null) return;
 
     deleteCookie("user-account");
     deleteCookie("user-token");
 
-    logout();
+    storeLogout();
   }
 
   return {
     account,
-    logout: _logout,
+    logout,
   };
 }

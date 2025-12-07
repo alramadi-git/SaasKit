@@ -1,15 +1,20 @@
+import { tNullable } from "@/types/nullish";
 import { tImage } from "./image";
 
-export type tHumanModel = {
+type tHumanModel = {
   uuid: string;
 
-  avatar?: tImage;
+  avatar: tNullable<tImage>;
+  address: tNullable<tImage>;
 
   username: string;
-  dateOfBirth: string;
+  birthday: string;
 
+  phoneNumber: string;
   email: string;
 
   updatedAt: string;
   createdAt: string;
 };
+
+export type { tHumanModel };

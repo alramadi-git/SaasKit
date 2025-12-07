@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function nonAuthenticatedMiddleware(request: NextRequest): NextResponse {
+export function nonAuthenticatedProxy(request: NextRequest): NextResponse {
   let response = NextResponse.next();
 
   if (!request.nextUrl.pathname.startsWith("/authentication", 6))

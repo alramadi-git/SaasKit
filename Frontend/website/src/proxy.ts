@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import nextIntlMiddleware from "@/middlewares/next-intl";
-import { adminMiddleware } from "./middlewares/admin/admin";
-import { baseMiddleware } from "./middlewares/base/base";
+import nextIntlProxy from "@/proxies/next-intl";
+import { adminProxy } from "./proxies/admin/admin";
+import { baseProxy } from "./proxies/base/base";
 
-export default function middleware(request: NextRequest): NextResponse {
-  let response = nextIntlMiddleware(request);
+export default function proxy(request: NextRequest): NextResponse {
+  let response = nextIntlProxy(request);
   if (!response.ok) return response;
 
-  response = baseMiddleware(request);
+  response = adminProxy(request);
   if (!response.ok) return response;
 
-  response = adminMiddleware(request);
+  response = baseProxy(request);
   if (!response.ok) return response;
 
   return response;

@@ -1,5 +1,7 @@
-export type tPaginationModel = {
-    page: number,
-    pageSize: number,
-    totalRecords: number
-}
+type tPaginationModel = {
+  page: number;
+  pageSize: number;
+  totalRecords: number;
+};
+
+export type { tPaginationModel };

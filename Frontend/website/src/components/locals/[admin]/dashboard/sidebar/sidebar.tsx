@@ -11,8 +11,6 @@ export default function Sidebar() {
   return (
     <ShadcnSidebar >
       <SidebarHeader />
-
-      <SidebarSeparator />
       <SidebarContent>{/* <SidebarContentMain /> */}</SidebarContent>
 
       <SidebarSeparator />

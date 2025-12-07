@@ -30,6 +30,7 @@ import {
   DropdownMenuItem,
 } from "@/components/shadcn/dropdown-menu";
 import { Link } from "@/components/locals/blocks/link";
+import { Skeleton } from "@/components/shadcn/skeleton";
 
 type tLink = {
   url: string;
@@ -55,19 +56,28 @@ function SidebarAccount() {
   const navigationMenu: tLink[] = tAccount.raw("navigation-menu");
 
   const { account } = useAccount();
-  if (account === null) return "hi world";
+  if (account === null)
+    return (
+      <div className="flex items-center gap-2 rounded-sm border p-2">
+        <Skeleton className="h-10 w-12" />
+        <div className="w-full space-y-2">
+          <Skeleton className="h-2.5 w-full" />
+          <Skeleton className="h-4 w-full" />
+        </div>
+      </div>
+    );
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <SidebarMenuButton
           size="lg"
-          className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+          className="data-[state=open]:bg-sidebar-accent border"
         >
-          <Avatar className="h-8 w-8 rounded-sm">
+          <Avatar className="size-8 rounded-sm bg-transparent">
             <AvatarImage src={account.avatar?.url} alt={account.username} />
-            <AvatarFallback className="rounded-sm">
-              <LuUser size={16} />
+            <AvatarFallback className="size-full rounded-sm bg-transparent">
+              <LuUser size={20} />
             </AvatarFallback>
           </Avatar>
           <div className="grid flex-1 text-left text-sm leading-tight">

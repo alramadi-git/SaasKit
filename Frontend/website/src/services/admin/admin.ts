@@ -20,7 +20,6 @@ class ClsAdmin extends ClsAbstractService {
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify(email),
     });
 

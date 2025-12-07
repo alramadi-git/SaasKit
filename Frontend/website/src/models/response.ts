@@ -1,27 +1,32 @@
 import { tPaginationModel } from "@/models/pagination";
 
-export type tSuccessOneModel<tData> =  {
+type tSuccessOneModel<tData> = {
   data: tData;
 };
 
-export type tSuccessManyModel<tData> =  {
+type tSuccessManyModel<tData> = {
   data: tData[];
   pagination: tPaginationModel;
 };
 
-export type tIssueModel = {
+type tIssueModel = {
   field: string;
   message: string;
 };
-export type tFailedModel =  {
+type tFailedModel = {
   message: string;
   issues: tIssueModel[];
 };
 
-export type tResponseOneModel<tData> =
-  | tSuccessOneModel<tData>
-  | tFailedModel;
+type tResponseOneModel<tData> = tSuccessOneModel<tData> | tFailedModel;
 
-export type tResponseManyModel<tData> =
-  | tSuccessManyModel<tData>
-  | tFailedModel;
+type tResponseManyModel<tData> = tSuccessManyModel<tData> | tFailedModel;
+
+export type {
+  tSuccessOneModel,
+  tSuccessManyModel,
+  tIssueModel,
+  tFailedModel,
+  tResponseOneModel,
+  tResponseManyModel,
+};

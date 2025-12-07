@@ -20,7 +20,6 @@ class ClsAuthenticationService extends ClsAbstractService {
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify(credentials),
     });
 

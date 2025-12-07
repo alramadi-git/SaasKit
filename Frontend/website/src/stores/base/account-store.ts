@@ -9,19 +9,24 @@ type tUseAccountStore = {
   logout: () => void;
 };
 const useAccountStore = create<tUseAccountStore>((set, get) => {
+  const account = null;
+
+  function login(account: tUserModel) {
+    if (get().account) return;
+
+    set({ account });
+  }
+
+  function logout() {
+    if (!get().account) return;
+
+    set({ account: null });
+  }
+
   return {
-    account: null,
-
-    login: (account: tUserModel) => {
-      if (get().account) return;
-
-      set({ account });
-    },
-    logout: () => {
-      if (!get().account) return;
-
-      set({ account: null });
-    },
+    account,
+    login,
+    logout,
   };
 });
 

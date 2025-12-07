@@ -1,7 +1,7 @@
 "use client";
 
 import { tEmail, tPassword } from "@/validations/authentication";
-import { ComponentProps, useState, Activity } from "react";
+import { ComponentProps, useState } from "react";
 
 import { cn } from "@/utilities/cn";
 
@@ -67,13 +67,11 @@ export function FieldPassword({
         )}
         onClick={toggleVisibility}
       >
-        <Activity mode={isVisible ? "visible" : "hidden"}>
+        {isVisible ? (
           <LuEyeOff size={16} aria-hidden="true" />
-        </Activity>
-
-        <Activity mode={isVisible ? "hidden" : "visible"}>
+        ) : (
           <LuEye size={16} aria-hidden="true" />
-        </Activity>
+        )}
       </button>
     </div>
   );

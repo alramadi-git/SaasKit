@@ -19,7 +19,7 @@ export default async function Layout({
     <SidebarProvider>
       <Sidebar />
       <SidebarInset>
-        {/* <Header /> */}
+        <Header />
         {children}
       </SidebarInset>
     </SidebarProvider>

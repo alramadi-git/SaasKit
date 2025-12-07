@@ -5,34 +5,36 @@ type tService = {
   statusText: string;
 };
 
-export type tSuccessOneService<tData> = tService & {
+type tSuccessOneService<tData> = tService & {
   isSuccess: true;
-
   data: tData;
 };
 
-export type tSuccessManyService<tData> = tService & {
+type tSuccessManyService<tData> = tService & {
   isSuccess: true;
-
   data: tData[];
   pagination: tPaginationModel;
 };
 
-export type tIssueService = {
+type tIssueService = {
   field: string;
   message: string;
 };
-export type tFailedService = tService & {
+type tFailedService = tService & {
   isSuccess: false;
-
   message: string;
   issues: tIssueService[];
 };
 
-export type tResponseOneService<tData> =
-  | tSuccessOneService<tData>
-  | tFailedService;
+type tResponseOneService<tData> = tSuccessOneService<tData> | tFailedService;
 
-export type tResponseManyService<tData> =
-  | tSuccessManyService<tData>
-  | tFailedService;
+type tResponseManyService<tData> = tSuccessManyService<tData> | tFailedService;
+
+export type {
+  tSuccessOneService,
+  tSuccessManyService,
+  tIssueService,
+  tFailedService,
+  tResponseOneService,
+  tResponseManyService,
+};
